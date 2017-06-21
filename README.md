@@ -1,64 +1,59 @@
-Ä¿Ç°Êý¾ÝÎªÒ»Ö÷Á½´Ó£¬Ã¿×éÓÐ5¸öÊµÀý,¹²ÏíÒ»¸öVIP£¬¹²Èý¸öVIP£¬¾ßÌå¹ØÏµÍ¼ÈçÏÂ£º
+### mysql binlogåŒæ­¥æ•°æ®åˆ°Kafka,é€šè¿‡zookeeperå®žçŽ°maxwellé«˜å¯ç”¨
 
-               £¨Ö÷¿â£©       £¨±¸¿â1£©        £¨±¸¿â2£©
-
- service_1      ip:port         ip:port         ip:port (¹²ÏíVIP1)
-
- service_2      ip:port         ip:port         ip:port (¹²ÏíVIP2)
-
- service_3      ip:port         ip:port         ip:port (¹²ÏíVIP3)
-
- service_4      ip:port         ip:port         ip:port (¹²ÏíVIP4)
-
- service_5      ip:port         ip:port         ip:port (¹²ÏíVIP5)
-
-Ä¿Ç°·½°¸×ö³öÈçÏÂ²ßÂÔ£º
-
-ÔÚ·þÎñÆ÷1ÉÏ¹²Æô¶¯service_1¡ª¡ª¡ªservice_5Îå¸ö·þÎñÊµÀý£¬·Ö±ð¶ÔÓ¦Îå¸öVIP¶Ômysql-binlogÊµÊ©Êý¾ÝÍ¬²½¡£µ±ÈÎºÎÒ»¸öÊµÀý·þÎñ¹ý³ÌÖÐ³öÏÖÎÊÌâÊ±£¬Ôò»á½øÐÐ3´Î×Ô¶¯ÐÞ¸´£¬3´Î×Ô¶¯ÐÞ¸´²»³É¹¦µÄ»°£¬ÔòÐèÒª·¢ËÍ¶ÌÐÅÔ¤¾¯£¬ÐèÈËÎª¸ÉÉæ½øÐÐ×Ô¶¨ÒåÐÞ¸´¡£Í¬Ê±ÔÚ2¡¢3·þÎñÆ÷ÉÏÉèÖÃ¼à¿Ø½ø³Ì£¬Óë1¼à¿ØÒ»¸ö¹²ÏíËø£¬Ò»µ©1»úÆ÷å´»ú£¬»òÕßÆäËûÒì³£³öÏÖ£¬Ôò2»òÕß3»á»ñÈ¡µ½¹²ÏíËø£¬²¢Æô¶¯Õý³£µÄmaxwell·þÎñ¡£
+***
+ç›®å‰æ•°æ®ä¸ºä¸€ä¸»ä¸¤ä»Žï¼Œæ¯ç»„æœ‰5ä¸ªå®žä¾‹,å…±äº«ä¸€ä¸ªVIPï¼Œå…±ä¸‰ä¸ªVIPï¼Œå…·ä½“å…³ç³»å›¾å¦‚ä¸‹ï¼š
 
 
-zookeeper  Ä¿Â¼ËµÃ÷£º
+               ï¼ˆä¸»åº“ï¼‰       ï¼ˆå¤‡åº“1ï¼‰        ï¼ˆå¤‡åº“2ï¼‰
 
-¹¤×÷¸ùÄ¿Â¼£º /maxwell
+ service_1      ip:port         ip:port         ip:port (å…±äº«VIP1)
 
-#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª-¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+ service_2      ip:port         ip:port         ip:port (å…±äº«VIP2)
 
-/registerpath: maxwell×¢²á·þÎñ
+ service_3      ip:port         ip:port         ip:port (å…±äº«VIP3)
 
-ËµÃ÷: Ò»µ©maxwellÕý³£Æô¶¯£¬ÔÚ»áÔÚ´ËÄ¿Â¼ÏÂ½¨Á¢ÏàÓ¦ÒÔclient_idÃüÃûµÄµÄÁÙÊ±Ä¿Â¼£»
+ service_4      ip:port         ip:port         ip:port (å…±äº«VIP4)
 
- µ±maxwell³öÏÖÒì³££¬Ôò¶ÔÓ¦µÄÄ¿Â¼Ôò»áÁ¢¼´ÏûÊ§¡£
+ service_5      ip:port         ip:port         ip:port (å…±äº«VIP5)
 
-#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+***
 
-/custom: ÊÇ·ñ×Ô¶¨ÒåÆô¶¯×Ô¶¨ÒåÐÞ¸´
+ç›®å‰æ–¹æ¡ˆåšå‡ºå¦‚ä¸‹ç­–ç•¥ï¼š
+åœ¨æœåŠ¡å™¨1ä¸Šå…±å¯åŠ¨service_1â€”â€”â€”service_5äº”ä¸ªæœåŠ¡å®žä¾‹ï¼Œåˆ†åˆ«å¯¹åº”äº”ä¸ªVIPå¯¹mysql-binlogå®žæ–½æ•°æ®åŒæ­¥ã€‚å½“ä»»ä½•ä¸€ä¸ªå®žä¾‹æœåŠ¡è¿‡ç¨‹ä¸­å‡ºçŽ°é—®é¢˜æ—¶ï¼Œåˆ™ä¼šè¿›è¡Œ3æ¬¡è‡ªåŠ¨ä¿®å¤ï¼Œ3æ¬¡è‡ªåŠ¨ä¿®å¤ä¸æˆåŠŸçš„è¯ï¼Œåˆ™éœ€è¦å‘é€çŸ­ä¿¡é¢„è­¦ï¼Œéœ€äººä¸ºå¹²æ¶‰è¿›è¡Œè‡ªå®šä¹‰ä¿®å¤ã€‚åŒæ—¶åœ¨2ã€3æœåŠ¡å™¨ä¸Šè®¾ç½®ç›‘æŽ§è¿›ç¨‹ï¼Œä¸Ž1ç›‘æŽ§ä¸€ä¸ªå…±äº«é”ï¼Œä¸€æ—¦1æœºå™¨å®•æœºï¼Œæˆ–è€…å…¶ä»–å¼‚å¸¸å‡ºçŽ°ï¼Œåˆ™2æˆ–è€…3ä¼šèŽ·å–åˆ°å…±äº«é”ï¼Œå¹¶å¯åŠ¨æ­£å¸¸çš„maxwellæœåŠ¡ã€‚
 
-ËµÃ÷£º¸ÃÄ¿Â¼ÏÂ¹²ÓÐservice_1¡ª¡ª¡ªservice_5Îå¸öÎÄ¼þ£¬ÓÃÓÚÔÚÏµÍ³×Ô¶¯ÐÞ¸´maxwell·þÎñ²»³É¹¦µÄÇé¿öÏÂ£¬È·¶¨service_1¡ª¡ª¡ªservice_5Ã¿¸ö·þÎñÊÇ·ñÐèÒªÈË¹¤ÊÖ¶¯¸ÉÉæ¡£Ò»µ©ÐèÒªÈË¹¤¸ÉÉæ£¬ÔòÐèÉèÈËÎªÉèÖÃinit_position
+#### zookeeper  ç›®å½•è¯´æ˜Žï¼š
 
-Ä¬ÈÏÖµ: 0£¨¼´²»ÐèÒªÈË¹¤¸ÉÉæ£©
+**å·¥ä½œæ ¹ç›®å½•ï¼š /maxwell**
 
-#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
 
-/custom/init_position: ÔÚ×Ô¶¨ÒåÐÞ¸´Æô¶¯µÄÌõ¼þÏÂ£¬ÉèÖÃservice_1 -- service_5Îå¸öÊµÀýµÄinit_positionµÄÖµ
+1. /registerpath: maxwellæ³¨å†ŒæœåŠ¡
 
-ËµÃ÷£ºÔÚÄ¿Â¼ÏÂÒ²ÓÐ¹²ÓÐservice_1¡ª¡ª¡ªservice_5Îå¸öÎÄ¼þ£¬ÔÚÉèÖÃ/registerpath/customÎª1µÄÇé¿öÏÂ£¬Ðè½«¶ÔÓ¦ÐèÒªÈË¹¤¸ÉÉæÐÞ¸´µÄ·þÎñ¶ÔÓ¦µÄservice_?µÄÖµÉèÖÃÎª£¨binlogÎÄ¼þ£ºposition£©¸ñÊ½µÄÊýÖµ
+è¯´æ˜Ž: ä¸€æ—¦maxwellæ­£å¸¸å¯åŠ¨ï¼Œåœ¨ä¼šåœ¨æ­¤ç›®å½•ä¸‹å»ºç«‹ç›¸åº”ä»¥client_idå‘½åçš„çš„ä¸´æ—¶ç›®å½•ï¼›
 
-Ä¬ÈÏÖµ£ºÆäËû
+ å½“maxwellå‡ºçŽ°å¼‚å¸¸ï¼Œåˆ™å¯¹åº”çš„ç›®å½•åˆ™ä¼šç«‹å³æ¶ˆå¤±ã€‚
 
-#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª-¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+2. /custom: æ˜¯å¦è‡ªå®šä¹‰å¯åŠ¨è‡ªå®šä¹‰ä¿®å¤
 
-/locks/service: ¹²ÏíËø
+è¯´æ˜Žï¼šè¯¥ç›®å½•ä¸‹å…±æœ‰service_1â€”â€”â€”service_5äº”ä¸ªæ–‡ä»¶ï¼Œç”¨äºŽåœ¨ç³»ç»Ÿè‡ªåŠ¨ä¿®å¤maxwellæœåŠ¡ä¸æˆåŠŸçš„æƒ…å†µä¸‹ï¼Œç¡®å®šservice_1â€”â€”â€”service_5æ¯ä¸ªæœåŠ¡æ˜¯å¦éœ€è¦äººå·¥æ‰‹åŠ¨å¹²æ¶‰ã€‚ä¸€æ—¦éœ€è¦äººå·¥å¹²æ¶‰ï¼Œåˆ™éœ€è®¾äººä¸ºè®¾ç½®init_position
 
-ËµÃ÷: ´ËÄ¿Â¼ÏÂÕý³£Çé¿öÏÂ»áÓÐÈýÌõÊý¾Ý£¬·Ö±ð´ú±í147¡¢148¡¢149ÈýÌ¨·þÎñÎïÀí»ú¾ºÕùÒ»¸ö¹²ÏíËø¡£
+é»˜è®¤å€¼: 0ï¼ˆå³ä¸éœ€è¦äººå·¥å¹²æ¶‰ï¼‰
 
-Õý³£Çé¿öÏÂ»áÓÐÒ»¸öÎïÀí»úµÄmaxwell´¦ÓÚ·þÎñ×´Ì¬£¬ÆäÓàÁ½¸ö´¦ÓÚ¼à¿Ø×èÈû×´Ì¬£¬Ò»µ©»ñÈ¡µ½¸Ã¹²ÏíËø£¬Ôò»áÓÉ¸ÃÌ¨ÎïÀí»úÌá¹©maxwell·þÎñ
+3. /custom/init_position: åœ¨è‡ªå®šä¹‰ä¿®å¤å¯åŠ¨çš„æ¡ä»¶ä¸‹ï¼Œè®¾ç½®service_1 -- service_5äº”ä¸ªå®žä¾‹çš„init_positionçš„å€¼
 
-#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª-¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+è¯´æ˜Žï¼šåœ¨ç›®å½•ä¸‹ä¹Ÿæœ‰å…±æœ‰service_1â€”â€”â€”service_5äº”ä¸ªæ–‡ä»¶ï¼Œåœ¨è®¾ç½®/registerpath/customä¸º1çš„æƒ…å†µä¸‹ï¼Œéœ€å°†å¯¹åº”éœ€è¦äººå·¥å¹²æ¶‰ä¿®å¤çš„æœåŠ¡å¯¹åº”çš„service_?çš„å€¼è®¾ç½®ä¸ºï¼ˆbinlogæ–‡ä»¶ï¼špositionï¼‰æ ¼å¼çš„æ•°å€¼
 
-/is_auto: ÊÇ·ñÊÇ×Ô¶¯Æô¶¯
+é»˜è®¤å€¼ï¼šå…¶ä»–
 
-ËµÃ÷£ºÊÖ¶¯Æô¶¯£ºÒ»°ãÓÃÓÚÈË¹¤Òì³£ÐÞ¸´
+4. /locks/service: å…±äº«é”
 
- ×Ô¶¯Æô¶¯£ºÒ»°ãÓÃÓÚÒì³£×Ô¶¯ÇÐ»»
+è¯´æ˜Ž: æ­¤ç›®å½•ä¸‹æ­£å¸¸æƒ…å†µä¸‹ä¼šæœ‰ä¸‰æ¡æ•°æ®ï¼Œåˆ†åˆ«ä»£è¡¨147ã€148ã€149ä¸‰å°æœåŠ¡ç‰©ç†æœºç«žäº‰ä¸€ä¸ªå…±äº«é”ã€‚
 
- Ä¬ÈÏ£ºÒ»¿ªÊ¼ÊÇÊÖ¶¯Æô¶¯£¨Æô¶¯³É¹¦ºó£¬ÔòÐèÉèÖÃ³É×Ô¶¯Æô¶¯£©
+æ­£å¸¸æƒ…å†µä¸‹ä¼šæœ‰ä¸€ä¸ªç‰©ç†æœºçš„maxwellå¤„äºŽæœåŠ¡çŠ¶æ€ï¼Œå…¶ä½™ä¸¤ä¸ªå¤„äºŽç›‘æŽ§é˜»å¡žçŠ¶æ€ï¼Œä¸€æ—¦èŽ·å–åˆ°è¯¥å…±äº«é”ï¼Œåˆ™ä¼šç”±è¯¥å°ç‰©ç†æœºæä¾›maxwellæœåŠ¡
+
+5. /is_auto: æ˜¯å¦æ˜¯è‡ªåŠ¨å¯åŠ¨
+
+è¯´æ˜Žï¼šæ‰‹åŠ¨å¯åŠ¨ï¼šä¸€èˆ¬ç”¨äºŽäººå·¥å¼‚å¸¸ä¿®å¤
+
+ è‡ªåŠ¨å¯åŠ¨ï¼šä¸€èˆ¬ç”¨äºŽå¼‚å¸¸è‡ªåŠ¨åˆ‡æ¢
+
+ é»˜è®¤ï¼šä¸€å¼€å§‹æ˜¯æ‰‹åŠ¨å¯åŠ¨ï¼ˆå¯åŠ¨æˆåŠŸåŽï¼Œåˆ™éœ€è®¾ç½®æˆè‡ªåŠ¨å¯åŠ¨ï¼‰
