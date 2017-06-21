@@ -1,4 +1,4 @@
-### mysql binlog同步数据到Kafka,通过zookeeper实现maxwell高可用
+## mysql binlog同步数据到Kafka,通过zookeeper实现maxwell高可用
 
 ***
 目前数据为一主两从，每组有5个实例,共享一个VIP，共三个VIP，具体关系图如下：
@@ -23,9 +23,9 @@
 
 ***
 
-#### zookeeper  目录说明：
+### zookeeper  目录说明：
 
-**工作根目录： /maxwell**
+***工作根目录： /maxwell***
 
 
 1. /registerpath: maxwell注册服务
